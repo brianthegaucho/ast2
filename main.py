@@ -6,6 +6,9 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
+    fps_clock = pygame.time.Clock()
+    dt = 0
+
     while True:
         log_state()
         for event in pygame.event.get():
@@ -13,6 +16,10 @@ def main():
                 return
         screen.fill("black")
         pygame.display.flip()
+        fps_clock.tick(60)
+        dt = fps_clock.tick(60)/1000
+        print(dt)
+
 
     print(f"Starting Astroids with pygame version: {pygame.version.ver}")
     print(f"Screen width: {SCREEN_WIDTH}")
